@@ -1,4 +1,5 @@
 from itertools import cycle, islice, dropwhile
+
 t = int(input())
 i = 0
 while(i < t):
@@ -6,27 +7,19 @@ while(i < t):
     n = int(n)
     v = int(v)
     lista = []
-    x = 0
-    while (x < n):
+    for x in range(n):
         lista.append(x+1)
-        x = x+1
+
     dedos = input().split()
     soma = 0
-    j = 0
-    while (j < len(dedos)):
+    for j in range(len(dedos)):
         soma = soma+(int(dedos[j]))
-        j = j+1
     if(soma == 0):
-        print(f'Caso {i+1}:',v)   
-    elif(soma < 0):
-        lista = lista[::-1]
-        soma = soma*(-1)
-        cycled = cycle(lista)  
-        skipped = dropwhile(lambda x: x != v+1, cycled)  
-        sliced = islice(skipped, None, soma)  
-        result = list(sliced)  
-        print(f'Caso {i+1}:',result[-1])
-    elif(soma > 0):
+        print(f'Caso {i+1}:',v)
+    else:     
+        if(soma < 0):
+            lista = lista[::-1]
+            soma = soma*(-1)
         cycled = cycle(lista)  
         skipped = dropwhile(lambda x: x != v+1, cycled)  
         sliced = islice(skipped, None, soma)  
